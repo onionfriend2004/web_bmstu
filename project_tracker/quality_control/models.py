@@ -25,9 +25,10 @@ class BugReport(models.Model):
         choices=STATUS_CHOICES,
         default='New',
     )
-    priority = models.IntegerField(choices=[(i, i) for i in range(1, 6)], default=1)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    PRIORITY_CHOICES = [(i, f'Priority {i}') for i in range(1, 6)]
+    priority = models.IntegerField(choices=PRIORITY_CHOICES, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class FeatureRequest(models.Model):
     title = models.CharField(max_length=100)
@@ -42,7 +43,7 @@ class FeatureRequest(models.Model):
         related_name='FeatureRequest',
         on_delete=models.SET_NULL,
         null=True,
-    )
+    ) 
     STATUS_CHOICES = [
         ('Approval', 'Рассмотрение'),
         ('Approved', 'Принято'),
@@ -51,5 +52,9 @@ class FeatureRequest(models.Model):
     status = models.CharField(
         max_length=50,
         choices=STATUS_CHOICES,
-        default='Approval',
+        default='New',
     )
+    PRIORITY_CHOICES = [(i, f'Priority {i}') for i in range(1, 6)]
+    priority = models.IntegerField(choices=PRIORITY_CHOICES, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

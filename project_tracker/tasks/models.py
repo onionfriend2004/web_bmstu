@@ -11,6 +11,8 @@ class Project(models.Model):
         return self.name
 
 class Task(models.Model):
+    def __str__(self):
+        return self.name
     
     # Кортеж из возможных статусов задачи
     STATUS_CHOICES = [
