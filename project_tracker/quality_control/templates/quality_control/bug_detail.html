@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <h1>{{ bug.title }}</h1>
+    <ul>
+    <p>Description: {{ bug.description }}</p>
+    <p>Status: {{ bug.status }}</p>
+    <p>Priority: {{ bug.priority }}</p>
+    <p>Project: {{ bug.project }}</p>
+    <p>Task: {{ bug.task }}</p>
+    </ul>
+{% endblock %}
